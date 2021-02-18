@@ -44,6 +44,7 @@ const useAsync = async () => {
   logger.cyan(`[ASYNC] Tempo gasto: ${endAsync}`)
 };
 
+
 const useCallback = (title) => {
   title = title || '=====================   USANDO CALLBACK   ======================';
   logger.head('================================================================');
@@ -64,6 +65,20 @@ const useCallback = (title) => {
       return callback(err, data, 'CALLBACK', extraInfo);
     });
   }
+};
+const usev2Async = async () => {
+  logger.head('================================================================');
+  logger.head('===================== V2  USANDO ASYNC   =======================');
+  logger.head('================================================================');
+  const startAsync = process.hrtime();
+
+  for (const i of batches) {
+    const result = await queueV2.sendBatchAsync(batch, url);
+    const {err, data} = result;
+    callback(err, data, 'V2 ASYNC');
+  }
+  const endAsync = process.hrtime(startAsync);
+  logger.cyan(`[V2 ASYNC] Tempo gasto: ${endAsync}`)
 };
 
 const useV2Callback = (title) => {
@@ -93,6 +108,7 @@ const useV2Callback = (title) => {
   await initUrl();
 
   await useAsync();
+  await usev2Async();
 
   useCallback();
   useV2Callback();
