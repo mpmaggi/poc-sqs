@@ -1,0 +1,19 @@
+{
+  "name": "poc-sqs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "env": "",
+    "start": "npm run env && node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-sqs": "^3.5.0",
+    "aws-sdk": "^2.846.0",
+    "chalk": "^4.1.0",
+    "dotenv": "^8.2.0"
+  }
+}
